@@ -5,21 +5,23 @@ import { useState } from "react";
 
 function App() {
 
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setDarkMode] = useState(false);
 
-  const appClass = isDarkMode ? "App dark" : "App light"
-  const btnText = isDarkMode ? "Light Mode" : "Dark Mode"
+  const handleDarkMode = () => {
 
-  function handleClick(event) {
-    setIsDarkMode(prevValue => !prevValue)
+      setDarkMode(isDarkMode => !isDarkMode)
   }
+
+  // replace 'false' with a state variable that can be toggled between true and false
+  // this will be used for the Dark Mode Toggle feature
+  const appClass = isDarkMode ? "App dark" : "App light"
 
   return (
     <div className={appClass}>
       <header>
         <h2>Shopster</h2>
-        <button 
-        onClick={handleClick}>{btnText}
+        <button onClick={handleDarkMode}>
+        {isDarkMode ? "Dark Mode" : "Light Mode"}
         </button>
       </header>
       <ShoppingList items={itemData} />
